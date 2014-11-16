@@ -68,6 +68,12 @@
     <OutputPath>bin\x86\linux-arm-6\</OutputPath>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>1416119454_306926.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>loadify.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Caliburn.Micro">
       <HintPath>..\..\lib\Caliburn.Micro.Core.2.0.1\lib\net45\Caliburn.Micro.dll</HintPath>
@@ -298,6 +304,7 @@
     <Resource Include="Resources\refresh_icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="1416119454_306926.ico" />
     <Content Include="libmp3lame.32.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
