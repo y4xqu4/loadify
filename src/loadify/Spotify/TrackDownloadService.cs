@@ -71,7 +71,7 @@ namespace loadify.Spotify
             AudioMetaData = new AudioMetaData();
             Mp3MetaData = new Mp3MetaData();
             Cleanup = true;
-            OutputDirectory = "download";
+            OutputDirectory = "Downloads";
         }
 
         public void Start()

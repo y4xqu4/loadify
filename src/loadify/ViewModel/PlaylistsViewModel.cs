@@ -139,7 +139,7 @@ namespace loadify.ViewModel
 
         public async void Handle(DataRefreshAuthorizedEvent message)
         {
-            _EventAggregator.PublishOnUIThread(new DisplayProgressEvent("Retrieving Playlists...", "Please wait while Loadify is retrieving playlists from your Spotify account."));
+            _EventAggregator.PublishOnUIThread(new DisplayProgressEvent("Lade Playlists...", "Bitte warte während Loadify deine Playlists importiert !"));
             var playlistCollection = await message.Session.GetPlaylistCollection();
             var playlists = new List<Playlist>(await playlistCollection.GetPlaylists());
             var playlistViewModels = new ObservableCollection<PlaylistViewModel>();
@@ -160,9 +160,9 @@ namespace loadify.ViewModel
         {
             if (String.IsNullOrEmpty(message.Content)) return;
 
-            var invalidUrlEvent = new NotificationEvent("Add Playlist",
-                                                        "The playlist could not be added because the url" +
-                                                        " does not point to a valid Spotify playlist." +
+            var invalidUrlEvent = new NotificationEvent("Playlist hinzufügen",
+                                                        "Die Playlist konnte nicht hinzugefügt werden," +
+                                                        " da die URL ungültig ist !" +
                                                         "\n" +
                                                         " Url: " + message.Content);
             if (!Regex.IsMatch(message.Content,
@@ -174,8 +174,8 @@ namespace loadify.ViewModel
             {
                 try
                 {
-                    _EventAggregator.PublishOnUIThread(new DisplayProgressEvent("Adding Playlist...", 
-                                                        "Please wait while Loadify is adding the playlist to your playlist collection"));
+                    _EventAggregator.PublishOnUIThread(new DisplayProgressEvent("Importiere Playlist...", 
+                                                        "Bitte warte, während Loadify die Playlist deiner Sammlung hinzufügt !"));
                     var playlist = await PlaylistModel.FromLibrary(message.Session.GetPlaylist(message.Content), message.Session);
                     Playlists.Add(new PlaylistViewModel(playlist, _EventAggregator, _SettingsManager));
 
@@ -197,9 +197,9 @@ namespace loadify.ViewModel
         {
             if (String.IsNullOrEmpty(message.Content)) return;
 
-            var invalidUrlEvent = new NotificationEvent("Add Track",
-                                                        "The track could not be added because the url" +
-                                                        " does not point to a valid Spotify track." +
+            var invalidUrlEvent = new NotificationEvent("Song hinzufügen",
+                                                        "Der Song konnte nicht hinzugefügt werden, " +
+                                                        " da die URL ungültig ist !" +
                                                         "\n" +
                                                         " Url: " + message.Content);
             if (!Regex.IsMatch(message.Content,
@@ -211,8 +211,8 @@ namespace loadify.ViewModel
             {
                 try
                 {
-                    _EventAggregator.PublishOnUIThread(new DisplayProgressEvent("Adding Track...",
-                                                        String.Format("Please wait while Loadify is adding the track to playlist {0}", message.Playlist.Name)));
+                    _EventAggregator.PublishOnUIThread(new DisplayProgressEvent("Importiere Song...",
+                                                        String.Format("Bitte warte während Loadify den Song zu Playlist {0} hinzufügt !", message.Playlist.Name)));
                     var track = await TrackModel.FromLibrary(message.Session.GetTrack(message.Content), message.Session);
                     track.Playlist = message.Playlist.Playlist;
                     message.Playlist.Tracks.Add(new TrackViewModel(track, _EventAggregator));
@@ -247,8 +247,8 @@ namespace loadify.ViewModel
             Playlists.Remove(message.Playlist);
             if (message.Permanent)
             {
-                _EventAggregator.PublishOnUIThread(new DisplayProgressEvent("Removing Playlist...",
-                                                    String.Format("Please wait while Loadify is removing playlist {0} from your account", message.Playlist.Name)));
+                _EventAggregator.PublishOnUIThread(new DisplayProgressEvent("Entferne Playlist...",
+                                                    String.Format("Bitte warte während Loadify die Playlist {0} von deinem Account entfernt !", message.Playlist.Name)));
                 var playlistCollection = await message.Session.GetPlaylistCollection();
                 await playlistCollection.Remove(message.Playlist.Playlist.UnmanagedPlaylist);
                 _EventAggregator.PublishOnUIThread(new HideProgressEvent());

@@ -9,7 +9,7 @@
              d:DesignHeight="320" d:DesignWidth="500">
     <Grid>
         <TabControl Margin="5">
-            <TabItem Header="Directories">
+            <TabItem Header="Speicherorte">
                 <Grid Background="Transparent">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" MinWidth="220"/>
@@ -23,15 +23,15 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="118*"/>
                     </Grid.RowDefinitions>
-                    <Label Content="Download Directory" FontSize="16" Foreground="{StaticResource AccentColorBrush}" ToolTip="Directory where the downloaded files will be stored"/>
+                    <Label Content="Downloads:" FontSize="16" Foreground="{StaticResource AccentColorBrush}" ToolTip="Directory where the downloaded files will be stored"/>
                     <TextBox x:Name="DownloadDirectory" Grid.Row="1" TextWrapping="Wrap" Margin="6,5" Text=""/>
                     <Button x:Name="BrowseDownloadDirectory" Content="..." Grid.Column="1" Grid.Row="1" Padding="0" MinHeight="0" Height="29" Margin="3"/>
-                    <Label Grid.Row="2" Content="Cache Directory" FontSize="16" Foreground="{StaticResource AccentColorBrush}" ToolTip="Directory where the cache and other temporary files will be stored"/>
+                    <Label Grid.Row="2" Content="Arbeitsverzeichnis:" FontSize="16" Foreground="{StaticResource AccentColorBrush}" ToolTip="Directory where the cache and other temporary files will be stored"/>
                     <TextBox x:Name="CacheDirectory" Grid.Row="3" TextWrapping="Wrap" Margin="6,5" Text=""/>
                     <Button x:Name="BrowseCacheDirectory" Content="..." Grid.Column="1" Grid.Row="3" Padding="0" MinHeight="0" Height="29" Margin="3"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Behavior">
+            <TabItem Header="Verhalten">
                 <Grid Background="Transparent">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" MinWidth="220"/>
@@ -44,13 +44,13 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="65*"/>
                     </Grid.RowDefinitions>
-                    <Label Content="Local Track Detection" FontSize="16" Foreground="{StaticResource AccentColorBrush}" ToolTip="Customization settings of the track detection system" />
-                    <CheckBox x:Name="NotifyLocalTrackDetections" Content="Ask me for removing tracks that were detected to be already downloaded" Margin="7 5" Grid.Row="1"/>
-                    <Label Grid.Row="2" Content="File Management" FontSize="16" Foreground="{StaticResource AccentColorBrush}" ToolTip="Customization settings of the track detection system" />
-                    <CheckBox Grid.Row="3"  x:Name="CleanupAfterConversion" Content="Remove uncompressed audio files after they were converted" Margin="7 5"/>
+                    <Label Content="Erkennung vorhandener Downloads" FontSize="16" Foreground="{StaticResource AccentColorBrush}" ToolTip="Customization settings of the track detection system" />
+                    <CheckBox x:Name="NotifyLocalTrackDetections" Content="Eine Besätigung anzeigen bevor vorhandene Downloads gelöscht werden" Margin="7 5" Grid.Row="1"/>
+                    <Label Grid.Row="2" Content="Dateiverwaltung" FontSize="16" Foreground="{StaticResource AccentColorBrush}" ToolTip="Customization settings of the track detection system" />
+                    <CheckBox Grid.Row="3"  x:Name="CleanupAfterConversion" Content="Lösche die unkomprimierten Dateien nach dem Konvertieren" Margin="7 5"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Connection" IsEnabled="False">
+            <TabItem Header="Verbindung" IsEnabled="False">
                 <Grid Background="Transparent">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" MinHeight="80"/>
@@ -84,7 +84,7 @@
                                 <ColumnDefinition Width="Auto" MinWidth="45"/>
                                 <ColumnDefinition Width="Auto" MinWidth="100"/>
                             </Grid.ColumnDefinitions>
-                            <CheckBox x:Name="UseProxy" Content="Enabled" Margin="5 0"/>
+                            <CheckBox x:Name="UseProxy" Content="Aktiviert" Margin="5 0"/>
                             <Label Content="IP:" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.Column="1"/>
                             <TextBox Text="{Binding ProxyIp, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" controls:TextboxHelper.Watermark="192.168.101.1"
                                      Grid.Column="2" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="5"/>

@@ -140,9 +140,9 @@ namespace loadify.ViewModel
 
                     if (trackDownloadService.Cancellation == TrackDownloadService.CancellationReason.UserInteraction)
                     {
-                        _EventAggregator.PublishOnUIThread(new NotificationEvent("Download cancelled", String.Format("The download contract was cancelled. \n" +
-                                                                                                        "Tracks downloaded: {0}\n" +
-                                                                                                        "Tracks remaining: {1}\n",
+                        _EventAggregator.PublishOnUIThread(new NotificationEvent("Download abgebrochen", String.Format("Der Download wurde abgebrochen. \n" +
+                                                                                                        "Heruntergeladen: {0}\n" +
+                                                                                                        "Verbleibend: {1}\n",
                                                                                                         DownloadedTracks.Count, RemainingTracks.Count)));
                         break;
                     }
@@ -161,7 +161,7 @@ namespace loadify.ViewModel
                     else
                     {
                         _EventAggregator.PublishOnUIThread(new DownloadContractPausedEvent(
-                                                            String.Format("{0} could not be downloaded because the account being used triggered an action in another client.",
+                                                            String.Format("{0} konnte nicht heruntergeladen werden, da der Spotify Account in einem anderen Client verwendet wird !",
                                                             CurrentTrack.ToString()),
                                                             RemainingTracks.IndexOf(CurrentTrack)));
                         return;

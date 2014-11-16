@@ -33,12 +33,12 @@
                 <ContentControl x:Name="Settings"/>
                 <Grid Grid.Row="1" Margin="10 0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" MinWidth="130"/>
-                        <ColumnDefinition Width="Auto" MinWidth="130"/>
-                        <ColumnDefinition Width="324*"/>
+                        <ColumnDefinition Width="Auto" MinWidth="134"/>
+                        <ColumnDefinition Width="Auto" MinWidth="157"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="StartDownload" Content="Download" Margin="5 10"/>
-                    <Button x:Name="CancelDownload" Content="Cancel Download" Margin="5 10" Grid.Column="1"/>
+                    <Button x:Name="StartDownload" Content="Download starten" Margin="5 10"/>
+                    <Button x:Name="CancelDownload" Content="Download abbrechen" Margin="5 10" Grid.Column="1"/>
                 </Grid>
             </Grid>
         </Grid>

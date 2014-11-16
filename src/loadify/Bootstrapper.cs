@@ -49,7 +49,7 @@ namespace loadify
             var instance = _Container.GetInstance(service, key);
             if (instance != null)
                 return instance;
-            throw new InvalidOperationException("Could not locate any instances.");
+            throw new InvalidOperationException("Konnte keine Instanzen finden !");
         }
 
         protected override IEnumerable<object> GetAllInstances(Type service)

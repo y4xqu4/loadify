@@ -24,17 +24,17 @@
             <ColumnDefinition Width="24*"/>
             <ColumnDefinition Width="8*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="Username" Text="{Binding User.Name, Mode=TwoWay}" controls:TextboxHelper.Watermark="Spotify username" 
+        <TextBox x:Name="Username" Text="{Binding User.Name, Mode=TwoWay}" controls:TextboxHelper.Watermark="Spotify Benutzername" 
                  VerticalContentAlignment="Center" TabIndex="0" Margin="3" Grid.Column="1" Grid.Row="2" />
         <PasswordBox x:Name="Password" Grid.Column="1"
-                     controls:TextboxHelper.Watermark="Spotify password" VerticalContentAlignment="Center" TabIndex="1"
+                     controls:TextboxHelper.Watermark="Spotify Passwort" VerticalContentAlignment="Center" TabIndex="1"
                      Margin="3" Grid.Row="3"/>
-        <Button x:Name="Login" Content="Login" Margin="20 3" Grid.Row="5" Grid.ColumnSpan="3" TabIndex="2"/>
-        <Label Grid.Column="0" Content="Username:" HorizontalContentAlignment="Right" Grid.Row="2"/>
+        <Button x:Name="Login" Content="Einloggen" Margin="20 3" Grid.Row="5" Grid.ColumnSpan="3" TabIndex="2"/>
+        <Label Grid.Column="0" Content="Benutzername:" HorizontalContentAlignment="Right" Grid.Row="2"/>
         <Label Grid.Column="0" Content="Passwort:" HorizontalContentAlignment="Right" Grid.Row="3"/>
         <Label Grid.Column="0" Content="LOADIFY " HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
                Grid.ColumnSpan="3" FontFamily="MV Boli" FontSize="42" Margin="0,0,10,10" HorizontalAlignment="Right" Width="252" Grid.RowSpan="2"/>
         <controls:MetroProgressBar IsIndeterminate="{Binding LoginProcessActive}" Foreground="{StaticResource AccentColorBrush}" Background="Transparent" Margin="3" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Stretch"/>
-        <CheckBox x:Name="RememberMe" Margin="22 0" Content="Remember me" ToolTip="Password is stored unencrypted, please use with caution" Grid.Row="4" Grid.ColumnSpan="2"/>
+        <CheckBox x:Name="RememberMe" Margin="22 0" Content="Eingeloggt bleiben" ToolTip="Da das Passwort unverschlüsselt gespeichert wird, ist diese Option auf Systemen mit mehreren Benutzern nicht zu empfehlen !" Grid.Row="4" Grid.ColumnSpan="2"/>
     </Grid>
 </controls:MetroWindow>

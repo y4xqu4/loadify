@@ -92,17 +92,17 @@ namespace loadify.ViewModel
                     {
                         case SpotifyError.BadUsernameOrPassword:
                         {
-                            await loginView.ShowMessageAsync("Login failed", "Name or password is wrong");
+                            await loginView.ShowMessageAsync("Login fehlgeschlagen", "Falscher Benutzername oder falsches Passwort");
                             break;
                         }
                         case SpotifyError.UnableToContactServer:
                         {
-                            await loginView.ShowMessageAsync("Login failed", "No connection to the Spotify servers could be made");
+                            await loginView.ShowMessageAsync("Login fehlgeschlagen", "Es konnte keine Verbindung zu den Spotify Servern hergestellt werden !");
                             break;
                         }
                         default:
                         {
-                            await loginView.ShowMessageAsync("Login failed", "Unknown error: " + error);
+                            await loginView.ShowMessageAsync("Login fehlgeschlagen", "Unbekannter Fehler: " + error);
                             break;
                         }
                     }

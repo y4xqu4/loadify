@@ -24,11 +24,11 @@ namespace loadify.Configuration
             }
             catch (UnauthorizedAccessException exception)
             {
-                throw new ConfigurationException(String.Format("Loadify is not authorized to create the download directory ({0})", playlistRepositoryDirectory), exception);
+                throw new ConfigurationException(String.Format("Loadify konnte das Downloadverzeichnis ({0}) leider nicht erstellen.", playlistRepositoryDirectory), exception);
             }
             catch (Exception exception)
             {
-                throw new ConfigurationException("An unhandled configuration error occured", exception);
+                throw new ConfigurationException("Ein unbekannter Konfigurationsfehler ist aufgetreten: ", exception);
             }
 
             completePath = playlistRepositoryDirectory + track.Name.ValidateFileName() + "." + targetFileExtension;

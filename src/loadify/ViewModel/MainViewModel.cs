@@ -149,9 +149,9 @@ namespace loadify.ViewModel
         public async void Handle(DownloadContractPausedEvent message)
         {
             var view = GetView() as MainView;
-            var dialogResult = await view.ShowMessageAsync("Download Paused", 
+            var dialogResult = await view.ShowMessageAsync("Download pausiert", 
                                         message.Reason
-                                        + "\nPlease resolve this issue before continuing downloading.",
+                                        + "\nBevor der Download fortgesetzt werden kann, muss dieser Fehler behoben werden:",
                                         MessageDialogStyle.AffirmativeAndNegative);
             
             if(dialogResult == MessageDialogResult.Affirmative) // pressed "OK"
@@ -163,16 +163,16 @@ namespace loadify.ViewModel
         public async void Handle(AddPlaylistRequestEvent message)
         {
             var view = GetView() as MainView;
-            var response = await view.ShowInputAsync("Add Playlist", "Please insert the link to the Spotify playlist you want to add.");
+            var response = await view.ShowInputAsync("Playlist hinzufügen", "Bitte gib den Link zur Spotify Playlist ein:");
             if (!String.IsNullOrEmpty(response))
             {
-                var dialogResult =  await view.ShowMessageAsync("Add Playlist",
-                                                                "Do you want to permanently add this playlist to your account?",
+                var dialogResult =  await view.ShowMessageAsync("Playlist hinzufügen",
+                                                                "Möchtest du diese Playlist deinem Account hinzufügen ?",
                                                                 MessageDialogStyle.AffirmativeAndNegative,
                                                                 new MetroDialogSettings()
                                                                 {
-                                                                    AffirmativeButtonText = "yes",
-                                                                    NegativeButtonText = "no"
+                                                                    AffirmativeButtonText = "Ja",
+                                                                    NegativeButtonText = "Nein"
                                                                 });
 
                 _EventAggregator.PublishOnUIThread(new AddPlaylistReplyEvent(response, _Session, dialogResult == MessageDialogResult.Affirmative));
@@ -188,7 +188,7 @@ namespace loadify.ViewModel
         public async void Handle(AddTrackRequestEvent message)
         {
             var view = GetView() as MainView;
-            var response = await view.ShowInputAsync(String.Format("Add Track to Playlist {0}", message.Playlist.Name), "Please insert the link to the Spotify track you want to add.");
+            var response = await view.ShowInputAsync(String.Format("Hinzufügen eines Songs zur Playlist {0}", message.Playlist.Name), "Bitte gib den Link des Songs ein, den du hinzufügen möchtest:");
 
             _EventAggregator.PublishOnUIThread(new AddTrackReplyEvent(response, message.Playlist, _Session));
         }
@@ -237,9 +237,9 @@ namespace loadify.ViewModel
             if (message.ExistingTracks.Count == 0) return;
 
             var view = GetView() as MainView;
-            var dialogResult = await view.ShowMessageAsync("Detected existing Tracks", 
-                                                            String.Format("Loadify detected that you already have {0} of the selected tracks in your download directory.\n" +
-                                                            "Do you want to remove them from your download contract?",
+            var dialogResult = await view.ShowMessageAsync("Existierende Downloads erkannt", 
+                                                            String.Format("Loadify hat erkannt, dass sich bereits {0} der Songs im Downloads Order befinden.\n" +
+                                                            "Möchtest du sie vom Auftrag entfernen ?",
                                                             message.ExistingTracks.Count), MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings() { AffirmativeButtonText = "yes", NegativeButtonText = "no" });
 
             _EventAggregator.PublishOnUIThread(new UnselectExistingTracksReplyEvent(dialogResult == MessageDialogResult.Affirmative));
@@ -248,13 +248,13 @@ namespace loadify.ViewModel
         public async void Handle(RemovePlaylistRequestEvent message)
         {
             var view = GetView() as MainView;
-            var dialogResult = await view.ShowMessageAsync("Remove Playlist",
-                                                            "Do you want to permanently remove this playlist from your account?",
+            var dialogResult = await view.ShowMessageAsync("Playlist entfernen",
+                                                            "Möchtest du diese Playlist von deinem Account entfernen ? (Das kann nicht rückgängig gemacht werden !)",
                                                             MessageDialogStyle.AffirmativeAndNegative,
                                                             new MetroDialogSettings()
                                                             {
-                                                                AffirmativeButtonText = "yes",
-                                                                NegativeButtonText = "no"
+                                                                AffirmativeButtonText = "Ja",
+                                                                NegativeButtonText = "Nein"
                                                             });
 
             _EventAggregator.PublishOnUIThread(new RemovePlaylistReplyEvent(_Session, message.Playlist, dialogResult == MessageDialogResult.Affirmative));

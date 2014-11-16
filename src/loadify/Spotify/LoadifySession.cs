@@ -72,7 +72,7 @@ namespace loadify.Spotify
         public async Task<PlaylistCollection> GetPlaylistCollection()
         {
             var container = _Session.Playlistcontainer();
-            if (container == null) throw new SpotifyException(SpotifyError.SystemFailure, "Playlist container could not be retrieved from the library");
+            if (container == null) throw new SpotifyException(SpotifyError.SystemFailure, "Der Playlist-Container konnte nicht aus der Bibliothek abgerufen werden");
             await SpotifyObject.WaitForInitialization(container.IsLoaded);
             return new PlaylistCollection(container);
         }

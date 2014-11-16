@@ -24,8 +24,8 @@
                 <RowDefinition Height="33*"/>
             </Grid.RowDefinitions>
             <Label Content="Version" FontSize="12" Grid.ColumnSpan="2"/>
-            <Label Content="Contributors" FontSize="12" Grid.Row="1" Grid.ColumnSpan="2"/>
-            <Label Content="License" FontSize="12" Grid.Row="2"/>
+            <Label Content="Mitwirkende" FontSize="12" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <Label Content="Lizenz" FontSize="12" Grid.Row="2"/>
 
             <Label x:Name="License" FontSize="12" Foreground="Gray" Grid.Row="2" Grid.Column="1"/>
             <Label x:Name="Version" FontSize="12" Foreground="Gray" Grid.Column="1" HorizontalContentAlignment="Right" Grid.Row="0"/>
