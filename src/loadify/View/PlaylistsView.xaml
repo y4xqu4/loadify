@@ -117,8 +117,8 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" FontSize="12" Padding="8 1" Content="{Binding SelectedTracks.Count}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" ContentStringFormat="{}{0} Lieder ausgewählt"/>
-            <Label Grid.Row="1" FontSize="12" Padding="8 1" Content="{Binding EstimatedDownloadTime}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" ContentStringFormat="{}Geschätzte Download Dauer: {0}"/>
+            <Label Grid.Row="0" FontSize="12" Padding="8 1" Content="{Binding SelectedTracks.Count}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" ContentStringFormat="{}{0} Songs ausgewählt"/>
+            <Label Grid.Row="1" FontSize="12" Padding="8 1" Content="{Binding EstimatedDownloadTime}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" ContentStringFormat="{}Geschätzte Dauer: {0}"/>
         </Grid>
     </Grid>
 </UserControl>
