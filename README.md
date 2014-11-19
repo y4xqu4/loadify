@@ -136,5 +136,5 @@ Again spotify uses the 2 link types:
 * Spotify links (example: __spotify:track:1B20QutZwNPRrlQ2tDKuOe__)
 
 ![](http://i.epvpimg.com/GAbHc.jpg)
-***
+
 ![](http://i.epvpimg.com/469De.jpg)
