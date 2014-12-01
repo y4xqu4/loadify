@@ -142,7 +142,7 @@ namespace loadify.ViewModel
             base(eventAggregator, settingsManager)
         {
             Playlist = playlist;
-            Tracks = new ObservableCollection<TrackViewModel>(playlist.Tracks.Select(track => new TrackViewModel(track, eventAggregator)));
+            Tracks = new ObservableCollection<TrackViewModel>(playlist.Tracks.Select(track => new TrackViewModel(track, eventAggregator, settingsManager)));
         }
 
         public PlaylistViewModel(IEventAggregator eventAggregator, ISettingsManager settingsManager):
@@ -165,8 +165,6 @@ namespace loadify.ViewModel
 
             NotifyOfPropertyChange(() => SelectedTracks);
             NotifyOfPropertyChange(() => AllTracksSelected);
-
-            _EventAggregator.PublishOnUIThread(new SelectedTracksChangedEvent(SelectedTracks));
         }
 
         public void Handle(UnselectExistingTracksReplyEvent message)

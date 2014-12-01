@@ -9,56 +9,6 @@ namespace loadify.ViewModel
 {
     public class SettingsViewModel : ViewModelBase
     {
-        public bool UseProxy
-        {
-            get { return _SettingsManager.ConnectionSetting.UseProxy; }
-            set
-            {
-                if (_SettingsManager.ConnectionSetting.UseProxy == value) return;
-                _Logger.Debug(String.Format("UseProxy setting has been changed. Old value: {0}, new value: {1}",
-                                            _SettingsManager.ConnectionSetting.UseProxy, value));
-
-                _SettingsManager.ConnectionSetting.UseProxy = value;
-                NotifyOfPropertyChange(() => UseProxy);
-            }
-        }
-
-        public string ProxyIp
-        {
-            get { return _SettingsManager.ConnectionSetting.ProxyIp; }
-            set
-            {
-                if (_SettingsManager.ConnectionSetting.ProxyIp == value) return;
-
-                if (!Regex.IsMatch(ProxyIp,
-                    @"^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"))
-                {
-                    _EventAggregator.PublishOnUIThread(new NotificationEvent("Settings Error", 
-                            "The proxy IP address that was entered is not a valid IP address."));
-                }
-
-                _Logger.Debug(String.Format("ProxyIp setting has been changed. Old value: {0}, new value: {1}",
-                                            _SettingsManager.ConnectionSetting.ProxyIp, value));
-
-                _SettingsManager.ConnectionSetting.ProxyIp = value;
-                NotifyOfPropertyChange(() => ProxyIp);
-            }
-        }
-
-        public ushort ProxyPort
-        {
-            get { return _SettingsManager.ConnectionSetting.ProxyPort; }
-            set
-            {
-                if (_SettingsManager.ConnectionSetting.ProxyPort == value) return;
-                _Logger.Debug(String.Format("ProxyPort setting has been changed. Old value: {0}, new value: {1}",
-                            _SettingsManager.ConnectionSetting.ProxyPort, value));
-
-                _SettingsManager.ConnectionSetting.ProxyPort = value;
-                NotifyOfPropertyChange(() => ProxyPort);
-            }
-        }
-
         public string DownloadDirectory
         {
             get { return _SettingsManager.DirectorySetting.DownloadDirectory; }
@@ -97,7 +47,7 @@ namespace loadify.ViewModel
                                             _SettingsManager.BehaviorSetting.NotifyLocalTrackDetections, value));
 
                 _SettingsManager.BehaviorSetting.NotifyLocalTrackDetections = value;
-                NotifyOfPropertyChange(() => CacheDirectory);
+                NotifyOfPropertyChange(() => NotifyLocalTrackDetections);
             }
         }
 
@@ -111,7 +61,22 @@ namespace loadify.ViewModel
                                             _SettingsManager.BehaviorSetting.CleanupAfterConversion, value));
 
                 _SettingsManager.BehaviorSetting.CleanupAfterConversion = value;
-                NotifyOfPropertyChange(() => CacheDirectory);
+                NotifyOfPropertyChange(() => CleanupAfterConversion);
+            }
+        }
+
+
+        public bool SkipOnDownloadFailures
+        {
+            get { return _SettingsManager.BehaviorSetting.SkipOnDownloadFailures; }
+            set
+            {
+                if (_SettingsManager.BehaviorSetting.SkipOnDownloadFailures == value) return;
+                _Logger.Debug(String.Format("SkipOnDownloadFailures setting has been changed. Old value: {0}, new value: {1}",
+                                            _SettingsManager.BehaviorSetting.SkipOnDownloadFailures, value));
+
+                _SettingsManager.BehaviorSetting.SkipOnDownloadFailures = value;
+                NotifyOfPropertyChange(() => SkipOnDownloadFailures);
             }
         }
 
